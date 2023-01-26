@@ -1,0 +1,51 @@
+experiment_name: SOLO
+config_name: 'res_18-768x512'
+backbone: 'res_18'
+
+optimizer: 'adamW'
+scheduler: 'OneCycleLR'
+
+lr: 0.0001
+batch_size: 1
+epoch: 50
+num_workers: 0
+
+aug: False
+augmentation_type: 'seg'
+aug_dicts:
+  affine: 
+    translate_percent: [-0.1, 0.1]
+    scale: [0.5, 1.5]
+    rotate: [-5, 5]
+    mode: 'constant'
+    cval: [200, 255]
+  fliplr:
+    p: 0.5
+  flipud:
+    p: 0.5
+  addgaussiannoise: 
+    loc: 0
+    scale: [0.0, 8.0]
+    per_channel: 0.5
+  multiply:              
+    mul: [0.8, 1.2]
+
+
+# (768, 512):scale ((1, 56), (28, 112), (56, 224), (112, 448), (224, 896))
+# (852, 512)): scale ((1, 64), (32, 128), (64, 256), (128, 512), (256, 2048)),   
+# (1333,  800):scale ((1, 96), (48, 192), (96, 384), (192, 768), (384, 2048))
+input_size: (768, 512)            
+
+dataset_name: 'Coco'
+training_mission: 'instance'
+num_classes: 80
+data_dir: '/home/shaoran/datasets/coco2017' 
+# 'val_annotation.json'    'instances_val2017.json'
+json_file: 'instances_val2017.json'   
+ # 'val2017'   ''
+name: 'val2017'                                                      
+
+# 'val_annotation.json'    'instances_val2017.json'
+json_file_val: 'instances_val2017.json'
+# 'val2017'  ''
+name_val: 'val2017'                                                

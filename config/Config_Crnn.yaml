@@ -1,0 +1,38 @@
+experiment_name: CRNN
+config_name: 'basic'
+backbone: 'basic'
+
+optimizer: 'adamW'
+scheduler: 'OneCycleLR'
+
+lr: 0.001
+batch_size: 2
+epoch: 10
+num_workers: 0
+
+aug: True
+augmentation_type: 'cls'
+aug_dicts:
+  affine: 
+    translate_percent: [-0.02, 0.02]
+    scale: [0.8, 1.2]
+    rotate: [-3, 3]
+    mode: 'constant'
+    cval: [200, 255]
+  addgaussiannoise:   
+    loc: 0
+    scale: [0.0, 8.0]
+    per_channel: 0.5
+  multiply:
+    mul: [0.4, 1.5]
+  grayscale: 
+    alpha: [0.5, 1.0]
+  gaussianblur:
+    sigma: [0.6,1.4]
+
+input_size: (32, 256)
+num_classes: 6624
+
+dataset_name: 'OcrRec'
+train_list: ['/home/shaoran/github_source/OCR/text_renderer-master/example_data/output/chn_data/images', '/home/shaoran/github_source/OCR/text_renderer-master/example_data/output/chn_data/chn_data.txt','/home/shaoran/git/Pytorch_Projectization_Tools/utils/chars_v1_p.txt']
+test_list: ['/home/shaoran/github_source/OCR/text_renderer-master/example_data/output/chn_data/images', '/home/shaoran/github_source/OCR/text_renderer-master/example_data/output/chn_data/chn_data.txt','/home/shaoran/git/Pytorch_Projectization_Tools/utils/chars_v1_p.txt']

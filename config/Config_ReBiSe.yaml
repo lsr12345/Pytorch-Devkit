@@ -1,0 +1,25 @@
+experiment_name: ReBiSe
+backbone: 'stdc_l'
+
+optimizer: 'adamW'
+scheduler: 'OneCycleLR'
+
+lr: 0.001
+batch_size: 4
+epoch: 10
+num_workers: 1
+
+aug: False
+augmentation_type: 'seg'
+input_size: (512, 1024)
+ignore_lb: 255
+
+dataset_name: 'Cityscapes'
+num_classes: 19
+images_dir: '/home/shaoran/datasets/cityscapes' 
+json_file: '/home/shaoran/git/Pytorch_Projectization_Tools/data/cityscapes/cityscapes_info.json'   
+
+name: 'val'                                                      
+
+name_val: 'val'
+loss_criteria: False                                                

@@ -1,0 +1,21 @@
+experiment_name: Seg
+encoder: 'se_resnext50_32x4d'
+weights: 'imagenet'
+activation: 'sigmoid'
+
+optimizer: 'adamW'
+scheduler: 'OneCycleLR'
+
+lr: 0.001
+batch_size: 2
+epoch: 10
+num_workers: 2
+
+aug: True
+augmentation_type: 'seg'
+input_size: (512, 512)
+
+classes: ['visible_row', 'visible_column', 'unvisible_row', 'unvisible_column']
+dataset_name: 'test_seg'
+train_list: ['./torch_data/seg_test/images', './torch_data/seg_test/masks_vr', './torch_data/seg_test/masks_vc', './torch_data/seg_test/masks_ur', './torch_data/seg_test/masks_uc']
+test_list: ['./torch_data/seg_test/images', './torch_data/seg_test/masks_vr', './torch_data/seg_test/masks_vc', './torch_data/seg_test/masks_ur', './torch_data/seg_test/masks_uc']
