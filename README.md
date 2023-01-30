@@ -36,16 +36,4 @@ For details about how to configure related algorithms, see examples.
 
 ## Requirements
 
-* `pyyaml`
-* `Cython`
-* `loguru`
-* `h5py`
-* `einops`
-* `pyclipper`
-* `pycocotools`
-* `Shapely`
-* `timm`
-* `segmentation-models-pytorch`
-* `torchsummary`
-* `imgaug`
-* `opencv-python`
+* `requirements.txt`
